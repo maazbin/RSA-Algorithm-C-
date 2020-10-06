@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class RSA{
+public:
+    RSA(){
+
+    }
+    RSA(int expo , int n){
+        this -> expo = expo;
+        this -> n = n;
+
+    }
+    void Euc(){
+    int a[20],d[20],q[20],r[20];
+    a[0]=n;
+    d[0]=expo;
+    int i=-1;
+    do{
+        ++i;
+        r[i]=a[i]%d[i];
+        q[i]=a[i]/d[i];
+        cout<<a[i]<<" = "<<d[i]<<" . "<<q[i]<<" + "<<r[i]<<endl;
+        a[i+1]=d[i];
+        d[i+1]=r[i];
+
+    }while(r[i]!=0);
+
+}
+private:
+    int expo;
+    int n;
+
+};
+//void Euc(int expo,int n);
+int main()
+{
+
+     RSA A(4145,66246);
+     A.Euc();
+
+    return 0;
+}
+//gcd(13,2436)
+//2436=13.187+5  a=d.q+r
+
